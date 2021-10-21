@@ -25,23 +25,19 @@ const defaultFadeColors = [
   'rgba(206, 201, 201, 0.9)',
 ];
 
-export type Props = typeof RNFadedScrollView.defaultProps &
-  ScrollViewProps & {
-    allowStartFade?: boolean;
-    allowEndFade?: boolean;
-    fadeSize?: number;
-    fadeColors?: any[];
-    isCloseToEnd?: (...args: any) => any;
-    isCloseToStart?: (...args: any) => any;
-    scrollThreshold?: number;
-    allowDivider?: boolean;
-    isRtl?: boolean;
-    innerRef?: LegacyRef<ScrollView>;
-    startFadeStyle?: StyleProp<ViewStyle>;
-    endFadeStyle?: StyleProp<ViewStyle>;
-    dividerStyle?: StyleProp<ViewStyle>;
-    containerStyle?: StyleProp<ViewStyle>;
-  };
+export type Props = ScrollViewProps &
+  Partial<typeof RNFadedScrollView.defaultProps> &
+  PropsWithoutDefault;
+
+type PropsWithoutDefault = {
+  isCloseToEnd?: (...args: any) => any;
+  isCloseToStart?: (...args: any) => any;
+  innerRef?: LegacyRef<ScrollView>;
+  startFadeStyle?: StyleProp<ViewStyle>;
+  endFadeStyle?: StyleProp<ViewStyle>;
+  dividerStyle?: StyleProp<ViewStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
+};
 
 interface State {
   scrollHeight: number;
@@ -74,6 +70,14 @@ class RNFadedScrollView extends Component<PropsWithChildren<Props>, State> {
     allowDivider: false,
     isRtl: false,
   };
+
+  readonly props!: Readonly<
+    PropsWithChildren<
+      ScrollViewProps &
+        typeof RNFadedScrollView.defaultProps &
+        PropsWithoutDefault
+    >
+  >;
 
   constructor({
     allowStartFade = false,
