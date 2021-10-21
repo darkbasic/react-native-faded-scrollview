@@ -79,26 +79,8 @@ class RNFadedScrollView extends Component<PropsWithChildren<Props>, State> {
     >
   >;
 
-  constructor({
-    allowStartFade = false,
-    allowEndFade = true,
-    fadeSize = 20,
-    fadeColors = defaultFadeColors,
-    scrollThreshold = 10,
-    allowDivider = false,
-    isRtl = false,
-    ...otherProps
-  }: PropsWithChildren<Props>) {
-    super({
-      allowStartFade,
-      allowEndFade,
-      fadeSize,
-      fadeColors,
-      scrollThreshold,
-      allowDivider,
-      isRtl,
-      ...otherProps,
-    });
+  constructor(props: PropsWithChildren<Props>) {
+    super(props);
     this.state = {
       // We don't know the size of the content initially, and the probably won't instantly try to scroll,
       // so set the initial content height and width to 0
