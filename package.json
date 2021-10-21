@@ -1,6 +1,6 @@
 {
   "name": "react-native-faded-scrollview",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A simple and customizable React Native component that allows you to add fade effect in ScrollView at both ends.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
