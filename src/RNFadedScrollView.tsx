@@ -1,4 +1,9 @@
-import React, { Component, forwardRef, LegacyRef } from 'react';
+import React, {
+  Component,
+  forwardRef,
+  LegacyRef,
+  PropsWithChildren,
+} from 'react';
 import {
   LayoutChangeEvent,
   NativeScrollEvent,
@@ -46,7 +51,7 @@ interface State {
   allowEndFade: boolean;
 }
 
-class RNFadedScrollView extends Component<Props, State> {
+class RNFadedScrollView extends Component<PropsWithChildren<Props>, State> {
   static propTypes = {
     allowStartFade: PropTypes.bool,
     allowEndFade: PropTypes.bool,
@@ -68,7 +73,7 @@ class RNFadedScrollView extends Component<Props, State> {
     allowDivider = false,
     isRtl = false,
     ...otherProps
-  }: Props) {
+  }: PropsWithChildren<Props>) {
     super({
       allowStartFade,
       allowEndFade,
@@ -322,6 +327,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default forwardRef<ScrollView, Props>((props, ref) => (
-  <RNFadedScrollView {...props} innerRef={ref} />
-));
+export default forwardRef<ScrollView, PropsWithChildren<Props>>(
+  (props, ref) => <RNFadedScrollView {...props} innerRef={ref} />
+);
