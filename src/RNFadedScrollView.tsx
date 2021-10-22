@@ -1,21 +1,16 @@
-import React, {
-  Component,
-  forwardRef,
-  LegacyRef,
-  PropsWithChildren,
-} from 'react';
+import React, { Component, forwardRef, PropsWithChildren, Ref } from 'react';
 import {
   LayoutChangeEvent,
   NativeScrollEvent,
   NativeSyntheticEvent,
   Platform,
-  ScrollView,
   ScrollViewProps,
   StyleProp,
   StyleSheet,
   View,
   ViewStyle,
 } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -32,7 +27,7 @@ export type Props = ScrollViewProps &
 type PropsWithoutDefault = {
   isCloseToEnd?: (...args: any) => any;
   isCloseToStart?: (...args: any) => any;
-  innerRef?: LegacyRef<ScrollView>;
+  innerRef?: Ref<ScrollView>;
   startFadeStyle?: StyleProp<ViewStyle>;
   endFadeStyle?: StyleProp<ViewStyle>;
   dividerStyle?: StyleProp<ViewStyle>;
